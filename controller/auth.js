@@ -25,7 +25,7 @@ exports.getSignup = (req,res,next)=>{
 exports.postSignup = (req,res,next)=>{
     console.log("here");
     console.log(req.body);
-    const {email,password,confirmPassword} = req.body;
+    const {email,name,username,password,confirmPassword} = req.body;
     if(password!==confirmPassword){
         return res.redirect("back");
     }
@@ -39,6 +39,8 @@ exports.postSignup = (req,res,next)=>{
             .then(hashedPassword=>{
                 return User.create({
                     email,
+                    name,
+                    username,
                     password:hashedPassword,
                     strategy:"LOCAL"
                 })

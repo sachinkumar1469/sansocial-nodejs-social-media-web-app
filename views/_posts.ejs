@@ -1,0 +1,53 @@
+<div class="post">
+    <div class="names">
+        <span class="name"><%=post.user.name%></span>
+        <span class="username">@<%=post.user.username%></span>
+    </div>
+    <div class="content">
+        <%=post.content%>
+    </div>
+    <div class="icons">
+        <div class="comment">
+            <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 24 24" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg">
+                <path fill="none" d="M0 0h24v24H0V0z"></path><path d="M20 17.17L18.83 16H4V4h16v13.17zM20 2H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h14l4 4V4c0-1.1-.9-2-2-2z"></path>
+            </svg>
+        </div>
+        <div class="retweet">
+            <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 1024 1024" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg">
+                <path d="M136 552h63.6c4.4 0 8-3.6 8-8V288.7h528.6v72.6c0 1.9.6 3.7 1.8 5.2a8.3 8.3 0 0 0 11.7 1.4L893 255.4c4.3-5 3.6-10.3 0-13.2L749.7 129.8a8.22 8.22 0 0 0-5.2-1.8c-4.6 0-8.4 3.8-8.4 8.4V209H199.7c-39.5 0-71.7 32.2-71.7 71.8V544c0 4.4 3.6 8 8 8zm752-80h-63.6c-4.4 0-8 3.6-8 8v255.3H287.8v-72.6c0-1.9-.6-3.7-1.8-5.2a8.3 8.3 0 0 0-11.7-1.4L131 768.6c-4.3 5-3.6 10.3 0 13.2l143.3 112.4c1.5 1.2 3.3 1.8 5.2 1.8 4.6 0 8.4-3.8 8.4-8.4V815h536.6c39.5 0 71.7-32.2 71.7-71.8V480c-.2-4.4-3.8-8-8.2-8z"></path>
+            </svg>
+        </div>
+        <div class="like">
+            <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 16 16" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg">
+                <path d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z"></path>
+            </svg>
+        </div>
+    </div>
+    <div class="add-comment">
+        <input type="text" name="comment" id="" placeholder="Add Comment">
+        <button>Add Comments</button>
+    </div>
+    <div class="comments">
+        <div class="view-comments">View Comments</div>
+        <div class="comments-list">
+            <div class="comment">
+                <div class="comment-user"><%=post.user.name%> <span class="comment-username">@<%=post.user.username%></span></div>
+                <div class="comment-content">
+                    <%=post.title%>
+                </div>
+            </div>
+            <div class="comment">
+                <div class="comment-user"><%=post.user.name%> <span class="comment-username">@<%=post.user.username%></span></div>
+                <div class="comment-content">
+                    <%=post.title%>
+                </div>
+            </div>
+            <div class="comment">
+                <div class="comment-user"><%=post.user.name%> <span class="comment-username">@<%=post.user.username%></span></div>
+                <div class="comment-content">
+                    <%=post.title%>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

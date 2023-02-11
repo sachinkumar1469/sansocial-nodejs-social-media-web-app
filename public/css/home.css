@@ -1,0 +1,206 @@
+.main {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  padding-inline: 5rem;
+  gap: 3rem;
+  padding-top: 2rem;
+  margin-top: 5rem;
+  position: relative;
+}
+
+.main .left {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+}
+
+.main .left .post {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #f2f2f2;
+  padding-inline: 30px;
+  padding-block: 15px;
+  gap: 15px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  font-family: "Montserrat", sans-serif;
+  height: fit-content;
+  margin-bottom: 3rem;
+  width: 100%;
+}
+
+.main .left .post .names .name {
+  font-weight: 600;
+}
+
+.main .left .post .names .username {
+  color: #333;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.main .left .post .names .username:hover {
+  color: blue;
+}
+
+.main .left .post .icons {
+  display: flex;
+  align-items: center;
+  align-self: stretch;
+}
+
+.main .left .post .icons > div {
+  margin-right: 5rem;
+  cursor: pointer;
+}
+
+.main .left .post .add-comment {
+  align-self: stretch;
+  display: flex;
+  gap: 15px;
+}
+
+.main .left .post .add-comment input {
+  width: 55%;
+  padding: 10px;
+  font-size: 12px;
+  border: none;
+  border-radius: 5px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  outline: none;
+  resize: vertical;
+  flex-grow: 1;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+.main .left .post .add-comment button {
+  padding: 10px;
+  background-color: #333;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}
+
+.main .left .post .add-comment button:hover {
+  background-color: #ddd;
+  color: #333;
+}
+
+.main .left .post .comments {
+  align-self: stretch;
+}
+
+.main .left .post .comments .view-comments {
+  background-color: lightgray;
+  cursor: pointer;
+  padding: 10px;
+  width: 100%;
+  border: none;
+  text-align: left;
+  outline: none;
+  font-size: 15px;
+  transition: 0.4s;
+  border-radius: 10px;
+}
+
+.main .left .post .comments .view-comments:hover {
+  background-color: darkgray;
+}
+
+.main .left .post .comments .view-comments.active {
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+.main .left .post .comments .comments-list {
+  max-height: 0px;
+  overflow: hidden;
+  transition: max-height 0.2s ease-out;
+}
+
+.main .left .post .comments .comments-list .comment {
+  background-color: white;
+  padding: 10px;
+  font-size: 15px;
+  border-bottom: 1px solid #333;
+}
+
+.main .left .post .comments .comments-list .comment .comment-user {
+  font-size: 12px;
+  margin-bottom: 5px;
+}
+
+.main .left .post .comments .comments-list .comment .comment-user .comment-username {
+  color: #333;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.main .left .post .comments .comments-list .comment .comment-user .comment-username:hover {
+  color: blue;
+}
+
+.main .left .post .comments .comments-list .comment .comment-content {
+  font-size: 14px;
+}
+
+.main .right {
+  position: sticky;
+  top: 6rem;
+  height: max-content;
+}
+
+.main .right .form-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #f2f2f2;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  font-family: "Montserrat", sans-serif;
+}
+
+.main .right .form-container h1 {
+  margin: 0;
+  font-size: 36px;
+  font-weight: bold;
+  text-align: center;
+  color: #333;
+  text-shadow: 1px 1px #ddd;
+}
+
+.main .right .form-container .post-input {
+  margin-top: 20px;
+  padding: 10px;
+  font-size: 18px;
+  width: 100%;
+  border: none;
+  border-radius: 5px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  outline: none;
+  resize: vertical;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+.main .right .form-container button {
+  margin-top: 20px;
+  padding: 10px 20px;
+  background-color: #333;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  font-size: 18px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}
+
+.main .right .form-container button:hover {
+  background-color: #ddd;
+  color: #333;
+}

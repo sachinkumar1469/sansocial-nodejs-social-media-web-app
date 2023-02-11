@@ -64,7 +64,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 app.use((req,res,next)=>{
-    console.log(req.user);
+    // console.log(req.user);
     res.locals.user = req.user;
     next();
 })
@@ -73,6 +73,8 @@ app.use((req,res,next)=>{
 app.use("/auth",require('./routes/auth'));
 
 app.use("/post",require("./routes/post-route"));
+
+app.use("/comment",require("./routes/comment"));
 
 app.use(require("./routes/index"));
 

@@ -20,13 +20,57 @@
   background-color: #f2f2f2;
   padding-inline: 30px;
   padding-block: 15px;
-  gap: 15px;
+  gap: 10px;
   border-radius: 10px;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   font-family: "Montserrat", sans-serif;
   height: fit-content;
   margin-bottom: 3rem;
   width: 100%;
+}
+
+.main .left .post .names {
+  position: relative;
+  align-self: stretch;
+  text-align: center;
+}
+
+.main .left .post .names .menu-dots {
+  position: absolute;
+  cursor: pointer;
+  height: 110%;
+  right: 0px;
+  top: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+}
+
+.main .left .post .names .menu-dots .menu-items {
+  position: absolute;
+  top: 19px;
+  right: 3px;
+  background-color: #333;
+  display: none;
+  flex-direction: column;
+}
+
+.main .left .post .names .menu-dots .menu-items a {
+  width: 6rem;
+  color: white;
+  text-decoration: none;
+  height: 2rem;
+  font-size: 0.9rem;
+  border: 1px solid #333;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.main .left .post .names .menu-dots .menu-items a:hover {
+  background-color: white;
+  color: #333;
 }
 
 .main .left .post .names .name {
@@ -43,14 +87,23 @@
   color: blue;
 }
 
+.main .left .post .content {
+  align-self: stretch;
+  background-color: white;
+  padding: 10px;
+  padding-block: 15px;
+  border-radius: 10px;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px -1px, rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;
+}
+
 .main .left .post .icons {
   display: flex;
   align-items: center;
+  justify-content: space-around;
   align-self: stretch;
 }
 
 .main .left .post .icons > div {
-  margin-right: 5rem;
   cursor: pointer;
 }
 
@@ -66,7 +119,7 @@
   font-size: 12px;
   border: none;
   border-radius: 5px;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px -1px, rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;
   outline: none;
   resize: vertical;
   flex-grow: 1;
@@ -127,25 +180,42 @@
   padding: 10px;
   font-size: 15px;
   border-bottom: 1px solid #333;
+  display: flex;
 }
 
-.main .left .post .comments .comments-list .comment .comment-user {
+.main .left .post .comments .comments-list .comment .comment-details {
+  flex-grow: 1;
+}
+
+.main .left .post .comments .comments-list .comment .comment-details .comment-user {
   font-size: 12px;
   margin-bottom: 5px;
 }
 
-.main .left .post .comments .comments-list .comment .comment-user .comment-username {
+.main .left .post .comments .comments-list .comment .comment-details .comment-user .comment-username {
   color: #333;
   text-decoration: none;
   cursor: pointer;
 }
 
-.main .left .post .comments .comments-list .comment .comment-user .comment-username:hover {
+.main .left .post .comments .comments-list .comment .comment-details .comment-user .comment-username:hover {
   color: blue;
 }
 
-.main .left .post .comments .comments-list .comment .comment-content {
+.main .left .post .comments .comments-list .comment .comment-details .comment-content {
   font-size: 14px;
+}
+
+.main .left .post .comments .comments-list .comment .comment-delete {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+}
+
+.main .left .post .comments .comments-list .comment .comment-delete a {
+  text-decoration: none;
+  color: black;
 }
 
 .main .right {

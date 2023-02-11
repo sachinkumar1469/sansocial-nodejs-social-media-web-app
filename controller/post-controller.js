@@ -1,4 +1,5 @@
 const Post = require("../models/post");
+const Comment = require("../models/comment");
 
 exports.createPost = (req,res,next)=>{
     console.log(req.body);
@@ -9,5 +10,28 @@ exports.createPost = (req,res,next)=>{
     })
     .catch(err=>{
         console.log(err);
+    })
+}
+
+exports.deletePost = (req,res,next)=>{
+    console.log(req.params);
+    Post.findById(req.params.postId)
+    .then(post=>{
+        if(post.user.toString() == req.user._id.toString()){
+            post.remove();
+            Comment.deleteMany({post:post._id})
+            .then(deleted=>{
+                res.redirect("back");
+            })
+            .catch(err=>{
+                next(err);
+            })
+        } else {
+            console.log("not equal");
+            res.redirect("back");
+        }
+    })
+    .catch(err=>{
+        next(err);
     })
 }

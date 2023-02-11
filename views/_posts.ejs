@@ -2,6 +2,15 @@
     <div class="names">
         <span class="name"><%=post.user.name%></span>
         <span class="username">@<%=post.user.username%></span>
+        <%if(post.user._id == user.id){%>
+            <div class="menu-dots">
+                <svg class="three-dots" stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 24 24" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M12 10c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm6 0c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zM6 10c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z"></path></svg>
+                <div class="menu-items">
+                    <a href="/post/delete/<%=post._id%>">Delete Post</a>
+                    <a>Edit Post</a>
+                </div>
+            </div>  
+        <%}%>
     </div>
     <div class="content">
         <%=post.content%>
@@ -23,31 +32,31 @@
             </svg>
         </div>
     </div>
-    <div class="add-comment">
-        <input type="text" name="comment" id="" placeholder="Add Comment">
-        <button>Add Comments</button>
-    </div>
+    <form class="add-comment" action="/comment/create" method="post">
+        <input type="hidden" name="post" value="<%=post._id%>">
+        <input type="text" name="content" id="" placeholder="Add Comment">
+        <button type="submit">Add Comments</button>
+    </form>
     <div class="comments">
         <div class="view-comments">View Comments</div>
         <div class="comments-list">
-            <div class="comment">
-                <div class="comment-user"><%=post.user.name%> <span class="comment-username">@<%=post.user.username%></span></div>
-                <div class="comment-content">
-                    <%=post.title%>
+            <%for(comment of post.comments){%>
+                <div class="comment">
+                    <div class="comment-details">
+                        <div class="comment-user"><%=comment.user.name%> <span class="comment-username">@<%=comment.user.username%></span></div>
+                        <div class="comment-content">
+                            <%=comment.content%>
+                        </div>
+                    </div>
+                    <div class="comment-delete">
+                        <%if(comment.user._id.toString() == locals.user._id.toString()){%>
+                        <a href="/comment/delete/<%=comment._id%>">
+                        <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 24 24" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path fill="none" d="M0 0h24v24H0z"></path><path d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM19 4h-3.5l-1-1h-5l-1 1H5v2h14V4z"></path></svg>
+                        </a>
+                        <%}%>
+                    </div>
                 </div>
-            </div>
-            <div class="comment">
-                <div class="comment-user"><%=post.user.name%> <span class="comment-username">@<%=post.user.username%></span></div>
-                <div class="comment-content">
-                    <%=post.title%>
-                </div>
-            </div>
-            <div class="comment">
-                <div class="comment-user"><%=post.user.name%> <span class="comment-username">@<%=post.user.username%></span></div>
-                <div class="comment-content">
-                    <%=post.title%>
-                </div>
-            </div>
+            <%}%>
         </div>
     </div>
 </div>

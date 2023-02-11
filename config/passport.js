@@ -45,7 +45,7 @@ passport.use(new GoogleStrategy({
                 strategy:"GOOGLE"
             })
             .then(newUser=>{
-                console.log(newUser);
+                // console.log(newUser);
                 done(null,newUser);
             })
             .catch(err=>{
@@ -61,8 +61,8 @@ passport.use(new GoogleStrategy({
 
 passport.serializeUser((user,done)=>{
     console.log("In serializeUser");
-    console.log(user);
-    console.log("____________");
+    // console.log(user);
+    // console.log("____________");
     done(null,user._id);
 })
 
@@ -78,6 +78,14 @@ passport.deserializeUser((userId,done)=>{
         .catch(err=>{
             done(err);
         })
-})
+});
+
+passport.checkAuthentication = (req,res,next)=>{
+    if(req.isAuthenticated()){
+        next();
+    } else {
+        res.redirect("/auth/signin");
+    }
+}
 
 module.exports = passport;

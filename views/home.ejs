@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="/css/home.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/noty/3.1.4/noty.min.css" integrity="sha512-0p3K0H3S6Q4bEWZ/WmC94Tgit2ular2/n0ESdfEX8l172YyQj8re1Wu9s/HT9T/T2osUw5Gx/6pAZNk3UKbESw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/noty/3.1.4/noty.min.js" integrity="sha512-lOrm9FgT1LKOJRUXF3tp6QaMorJftUjowOWiDcG5GFZ/q7ukof19V0HKx/GWzXCdt9zYju3/KhBNdCLzK8b90Q==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js" integrity="sha512-STof4xm1wgkfm7heWqFJVn58Hm3EtS31XFaagaa8VMReCXAkQnJZ+jEy8PCC/iT18dFy95WcExNHFTqLyp72eQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
     
 </head>
@@ -46,7 +47,7 @@
         <div class="right">
             <div class="form-container">
                 <h1>Create a Post</h1>
-                <form action="/post/create" method="post">
+                <form action="/post/create" method="post" id="newPostForm">
                     <input type="text" placeholder="Title" name="title" class="post-input">
                     <textarea class="post-input" name="content" placeholder="What's on your mind?"></textarea>
                     <button class="post-button">Post</button>
@@ -87,5 +88,6 @@
         "<%}%>"
 
     </script>
+    <script src="/js/home_post_ajax.js"></script>
 </body>
 </html>

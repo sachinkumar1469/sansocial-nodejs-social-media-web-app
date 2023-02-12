@@ -58,7 +58,10 @@ app.use(expressSession({
     secret:"MySecretKey",
     saveUninitialized:false,
     resave:false,
-    store:store
+    store:store,
+    // cookie: {
+    //     httpOnly: false,
+    // }
 }));
 
 app.use(flash());

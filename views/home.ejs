@@ -7,20 +7,35 @@
     <title>San Social</title>
     <link rel="stylesheet" href="/css/navbar.css">
     <link rel="stylesheet" href="/css/home.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/noty/3.1.4/noty.min.css" integrity="sha512-0p3K0H3S6Q4bEWZ/WmC94Tgit2ular2/n0ESdfEX8l172YyQj8re1Wu9s/HT9T/T2osUw5Gx/6pAZNk3UKbESw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/noty/3.1.4/noty.min.js" integrity="sha512-lOrm9FgT1LKOJRUXF3tp6QaMorJftUjowOWiDcG5GFZ/q7ukof19V0HKx/GWzXCdt9zYju3/KhBNdCLzK8b90Q==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
     
 </head>
 <body>
     <nav class="navbar">
         <h1 class="logo">San Social</h1>
+        <div class="">
+            <%if(message.length>0){%>
+                <p><%=message[0]%></p>
+            <%}%>
+        </div>
         <div class="nav-btns">
-        <button class="home-btn"><%=user.name%></button>
-        <button class="favorites-btn">Logout</button>
+        <a href="/user/profile/<%=user.username%>" class="home-btn"><%=user.name%></a>
+        <a href="/auth/logout" class="favorites-btn">Logout</a>
         </div>
     </nav>
 
     <div class="main">
         <div class="left">
-            <div class="left-left"></div>
+            <div class="users">
+                <h3>Users</h3>
+                <%for(let user of users){%>
+                    <div class="user">
+                        <p><span class="user_name"><%=user.name%></span> <a href="/user/profile/<%=user.username%>" class="username">@<%=user.username%></a></p>
+                    </div>
+                <%}%>
+            </div>
             <div class="posts">
                 <%for(let post of posts){%>
                     <%- include("_posts.ejs",{post})-%>
@@ -42,5 +57,35 @@
 
     <script src="/js/comment.js"></script>
     <script src="/js/posts.js"></script>
+    <script>
+        "<%if(flash.success && flash.success.length>0) {%>"
+            new Noty({
+                theme:"relax",
+                type: 'success',
+                layout: 'topRight',
+                text: "<%=flash.success[0]%>",
+                timeout:2000
+            }).show();
+        "<%}%>"
+        "<%if(flash.error && flash.error.length > 0){%>"
+            new Noty({
+                theme:"relax",
+                type: 'error',
+                layout: 'topRight',
+                text: "<%=flash.error[0]%>",
+                timeout:2000
+            }).show();
+        "<%}%>"
+        "<%if(flash.warning && flash.warning.length > 0){%>"
+            new Noty({
+                theme:"relax",
+                type: 'warning',
+                layout: 'topRight',
+                text: "<%=flash.warning[0]%>",
+                timeout:2000
+            }).show();
+        "<%}%>"
+
+    </script>
 </body>
 </html>

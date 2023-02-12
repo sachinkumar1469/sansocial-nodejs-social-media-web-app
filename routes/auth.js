@@ -6,7 +6,7 @@ const {getSignIn,postSignIn,postGoogle,getSignup,postSignup,getLogout,resetPassw
 
 router.get("/signin",getSignIn);
 
-router.post("/signin",passport.authenticate("local",{failureRedirect:"/auth/login"}),postSignIn);
+router.post("/signin",passport.authenticate("local",{failureRedirect:"/auth/signin"}),postSignIn);
 
 router.use("/google/redirect",passport.authenticate("google",{failureRedirect:"/fail"}),postGoogle);
 

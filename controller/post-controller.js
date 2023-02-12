@@ -14,7 +14,7 @@ exports.createPost = (req,res,next)=>{
 }
 
 exports.deletePost = (req,res,next)=>{
-    console.log(req.params);
+    req.flash("warning","Post Deleted!")
     Post.findById(req.params.postId)
     .then(post=>{
         if(post.user.toString() == req.user._id.toString()){

@@ -9,23 +9,33 @@ console.log("Executing Passport.js");
 
 passport.use(new LocalStrategy({
     usernameField:"email",
-    passwordField:"password"
-},(username,password,done)=>{
+    passwordField:"password",
+    passReqToCallback:true
+},(req,username,password,done)=>{
     let user = null;
     User.findOne({email:username})
         .then(result=>{
-            // console.log(user);
             user = result;
             if(!!!user){
+                req.flash("error","User Doesn't Exist")
                 return done(null,false);
             }
             return bcrypt.compare(password,user.password); 
         })
         .then(isPasswordMatched=>{
+            if(typeof isPasswordMatched != "boolean"){
+                return null;
+            }
+            if(!isPasswordMatched){
+                req.flash("warning","Password Mismatch")
+                return done(null,false);
+            }
             return done(null,user);
         })
         .catch(err=>{
             console.log(err);
+            req.flash("error","Internal Server Error");
+            return done(err);
         })
 }));
 

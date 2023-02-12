@@ -10,6 +10,9 @@ exports.getSignIn = (req,res,next)=>{
 };
 
 exports.postSignIn = (req,res,next)=>{
+    req.flash("success","Logged In Successfully");
+    // req.flash("error","Logged In Succesfully");
+    // req.flash("warning","Logged In Succesfully");
     res.redirect("/");
 }
 

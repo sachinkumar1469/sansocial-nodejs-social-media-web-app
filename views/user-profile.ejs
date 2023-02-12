@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>San Social</title>
+    <link rel="stylesheet" href="/css/navbar.css">
+    <link rel="stylesheet" href="/css/home.css">
+    <link href="lib/noty.css" rel="stylesheet">
+    <script src="lib/noty.js" type="text/javascript"></script>
+    
+</head>
+<body>
+    <nav class="navbar">
+        <h1 class="logo"><a href="/">San Social</a></h1>
+        <div class="nav-btns">
+        <button class="home-btn"><%=user.name%></button>
+        <button class="favorites-btn">Logout</button>
+        </div>
+    </nav>
+
+    <div class="main">
+        <div class="left">
+            <div class="left-left"></div>
+            <div class="posts">
+                <%for(let post of posts){%>
+                    <%- include("_posts.ejs",{post})-%>
+                <%}%>
+            </div>
+            
+        </div>
+        <div class="right">
+            <div class="form-container">
+                <h1>Create a Post</h1>
+                <form action="/post/create" method="post">
+                    <input type="text" placeholder="Title" name="title" class="post-input">
+                    <textarea class="post-input" name="content" placeholder="What's on your mind?"></textarea>
+                    <button class="post-button">Post</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="/js/comment.js"></script>
+    <script src="/js/posts.js"></script>
+</body>
+</html>

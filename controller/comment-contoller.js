@@ -2,7 +2,8 @@ const Post = require("../models/post");
 const Comment = require("../models/comment");
 
 exports.create = (req,res,next)=>{
-    console.log(req.body);
+    // console.log(req.body);
+    req.flash("success","Comment Added");
     Post.findById(req.body.post)
     .then(post=>{
         if(!!post){
@@ -36,6 +37,7 @@ exports.create = (req,res,next)=>{
 
 exports.deleteComment = (req,res,next)=>{
     // console.log(req.params);
+    req.flash("warning","Comment Deleted")
     Comment.findById(req.params.commentId)
     .then(comment=>{
         if(comment.user.toString() === req.user._id.toString()){

@@ -1,7 +1,7 @@
 .main{
     display: grid;
     grid-template-columns: 2fr 1fr;
-    padding-inline: 5rem;
+    padding-inline: 4rem;
     gap: 3rem;
     padding-top: 2rem;
     margin-top: 5rem;
@@ -9,7 +9,46 @@
    
     .left{
         display: grid;
-        grid-template-columns: 1fr 2fr;
+        gap: 2rem;
+        grid-template-columns: 0.8fr 2fr;
+        position: relative;
+        .users{
+            // border: 1px solid red;
+            background-color: #f2f2f2;
+            // border-radius: 10px;
+            height: max-content;
+            border-radius: 10px 10px 0 0;
+            position: sticky;
+            top: 6rem;
+            // padding-bottom: 0.5rem;
+            h3{
+                font-family: "Montserrat", sans-serif;
+                text-align: center;
+                font-weight: bold;
+                text-align: center;
+                color: #333;
+                text-shadow: 1px 1px #ddd;
+                margin-block: 0.5rem;
+            }
+            .user{
+                padding: 5px;
+                text-align: center;
+                background-color: #ddd;
+                cursor: pointer;
+                border-bottom: 1px solid #333;
+                transition: all 0.1s ease-in-out;
+                &:hover{
+                    background-color: #fff;
+                }
+
+                .user_name{
+                    font-weight: 600;
+                }
+                .username{
+                    text-decoration: none;
+                }
+            }
+        }
         .post{
             display: flex;
             flex-direction: column;
@@ -75,6 +114,7 @@
                     color: #333;
                     text-decoration: none;
                     cursor: pointer;
+                    text-decoration: none;
 
                     &:hover{
                         color: blue;

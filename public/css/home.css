@@ -1,7 +1,7 @@
 .main {
   display: grid;
   grid-template-columns: 2fr 1fr;
-  padding-inline: 5rem;
+  padding-inline: 4rem;
   gap: 3rem;
   padding-top: 2rem;
   margin-top: 5rem;
@@ -10,7 +10,48 @@
 
 .main .left {
   display: grid;
-  grid-template-columns: 1fr 2fr;
+  gap: 2rem;
+  grid-template-columns: 0.8fr 2fr;
+  position: relative;
+}
+
+.main .left .users {
+  background-color: #f2f2f2;
+  height: max-content;
+  border-radius: 10px 10px 0 0;
+  position: sticky;
+  top: 6rem;
+}
+
+.main .left .users h3 {
+  font-family: "Montserrat", sans-serif;
+  text-align: center;
+  font-weight: bold;
+  text-align: center;
+  color: #333;
+  text-shadow: 1px 1px #ddd;
+  margin-block: 0.5rem;
+}
+
+.main .left .users .user {
+  padding: 5px;
+  text-align: center;
+  background-color: #ddd;
+  cursor: pointer;
+  border-bottom: 1px solid #333;
+  transition: all 0.1s ease-in-out;
+}
+
+.main .left .users .user:hover {
+  background-color: #fff;
+}
+
+.main .left .users .user .user_name {
+  font-weight: 600;
+}
+
+.main .left .users .user .username {
+  text-decoration: none;
 }
 
 .main .left .post {
@@ -81,6 +122,7 @@
   color: #333;
   text-decoration: none;
   cursor: pointer;
+  text-decoration: none;
 }
 
 .main .left .post .names .username:hover {

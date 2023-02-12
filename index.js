@@ -3,6 +3,8 @@ const mongoose = require("mongoose");
 const expressSession = require("express-session");
 const path = require("path");
 const sassMiddleware = require("node-sass-middleware");
+const flash = require("connect-flash");
+const flashMdl = require("./middlewares/flash");
 
 // To save express session in mongodb 
 const MongoDBStore = require("connect-mongodb-session")(expressSession);
@@ -40,7 +42,7 @@ app.use(nodeSassMiddleware({
     src:path.join(__dirname,"public","scss"),
     dest:path.join(__dirname,"public","css"),
     prefix:"/css",
-    debug:true,
+    // debug:true,
     outputStyle:"expanded"
 }))
 
@@ -59,6 +61,9 @@ app.use(expressSession({
     store:store
 }));
 
+app.use(flash());
+app.use(flashMdl);
+
 // Initializing the passport js
 app.use(passport.initialize());
 app.use(passport.session());
@@ -75,6 +80,8 @@ app.use("/auth",require('./routes/auth'));
 app.use("/post",require("./routes/post-route"));
 
 app.use("/comment",require("./routes/comment"));
+
+app.use("/user",require("./routes/user"));
 
 app.use(require("./routes/index"));
 

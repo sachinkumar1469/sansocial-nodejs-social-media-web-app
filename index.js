@@ -48,6 +48,7 @@ app.use(nodeSassMiddleware({
 
 // Statid file routes
 app.use(express.static('public'));
+app.use("/uploads",express.static(path.join(__dirname+"/uploads")));
 
 // To encode req body
 app.use(express.urlencoded({extended:false}));

@@ -6,6 +6,7 @@
 
 .login {
   background-color: #7109f0;
+  background-color: #e7e7e7;
   height: 100vh;
   min-height: 500px;
   display: flex;
@@ -14,12 +15,17 @@
   overflow: hidden;
 }
 
+.login * {
+  font-family: "Montserrat", sans-serif;
+}
+
 .login .form {
-  width: 350px;
+  width: 400px;
   height: 460px;
   background-color: white;
   border-radius: 18px;
   overflow: hidden;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 
 .login .form .img {
@@ -37,6 +43,7 @@
   text-align: center;
   margin-block: 8px;
   color: #7109f0;
+  color: #333;
 }
 
 /* .login .form form{
@@ -94,11 +101,15 @@
 .login .form .signin button {
   width: 100%;
   height: 2.5rem;
-  background-color: #7109f0;
-  border: none;
   outline: none;
-  color: white;
-  border-radius: 6px;
+  background-color: #333;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  font-size: 18px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s;
 }
 
 .login .form .third__party {

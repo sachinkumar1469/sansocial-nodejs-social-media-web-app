@@ -28,6 +28,7 @@ exports.getProfile = (req,res,next)=>{
             }
         })
         .then(posts=>{
+            console.log(user);
             res.render(path.join(__dirname,"..","views","user-profile"),{profile_user:user,posts});
         })
         .catch(err=>{

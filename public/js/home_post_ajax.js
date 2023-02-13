@@ -1,22 +1,4 @@
 {
-
-
-    // function getCookie(name) {
-    //     var cookieValue = null;
-    //     if (document.cookie && document.cookie !== '') {
-    //       var cookies = document.cookie.split(';');
-    //       for (var i = 0; i < cookies.length; i++) {
-    //         var cookie = cookies[i].trim();
-    //         // Does this cookie string begin with the name we want?
-    //         if (cookie.substring(0, name.length + 1) === (name + '=')) {
-    //           cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
-    //           break;
-    //         }
-    //       }
-    //     }
-    //     return cookieValue;
-    //   }
-
     // Method to submit the form data using ajax
     const createPost = function(){
         const newPostForm = $("#newPostForm");
@@ -102,6 +84,7 @@
       return newPost;
     }
 
+    // Delete Post
     function deletePost(deleteLink){
       $(deleteLink).click(function(e){
         // console.log("clicked");
@@ -128,4 +111,71 @@
         })
       })
     }
+
+    // Event listener on all the preloaded posts delete buttons
+    $('.post .delete-post').each(function(){
+      deletePost($(this))
+    })
+
+    // Create comment
+    function createComment(){
+      $(".post .add-comment").each(function(){
+        $(this).submit(function(e){
+          e.preventDefault();
+          console.log("comment submit clicked");
+
+          $.ajax({
+            type:"post",
+            url:"/comment/create",
+            data:$(this).serialize(),
+            success:(resData)=>{
+              console.log("data",resData);
+              const newComment = addCommentToDom(resData);
+              const commentListEl =  $(this).siblings().find(".comments-list");
+              commentListEl.prepend(newComment);
+              let scrollHeight = commentListEl.prop('scrollHeight');
+              commentListEl.css('max-height', `${scrollHeight}px`);
+              $(this).siblings().find(".view-comments").addClass("active");
+              new Noty({
+                theme:"relax",
+                type: 'success',
+                layout: 'topRight',
+                text: "Comment Added",
+                timeout:2000
+              }).show();
+              // console.log();
+            },
+            error:function(err){
+              console.log("err",err);
+            }
+          })
+        })
+      })
+    }
+    createComment();
+
+    // Add comment to the dome
+    function addCommentToDom(resData){
+      const {comment,user} = resData;
+        const newComment = $(`
+                <div class="comment">
+                    <div class="comment-details">
+                        <div class="comment-user">${user.name} <span class="comment-username">@${user.username}</span></div>
+                        <div class="comment-content">
+                            ${comment.content}
+                        </div>
+                    </div>
+                    <div class="comment-delete">
+                        <a href="/comment/delete/${comment._id}">
+                        <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 24 24" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path fill="none" d="M0 0h24v24H0z"></path><path d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM19 4h-3.5l-1-1h-5l-1 1H5v2h14V4z"></path></svg>
+                        </a>
+                    </div>
+                </div>
+          `);
+
+        return newComment;
+    }
+    // Delete comment
+
+    // Remove the comment from the dom
 }

@@ -28,39 +28,51 @@ exports.getSignup = (req,res,next)=>{
 exports.postSignup = (req,res,next)=>{
     console.log("here");
     console.log(req.body);
-    const {email,name,username,password,confirmPassword} = req.body;
-    if(password!==confirmPassword){
-        return res.redirect("back");
-    }
-
-    User.findOne({email})
-    .then(user=>{
-        if(!!user){
-            return res.redirect("/auth/signin");
+    User.uploadAvatar(req,res,(err)=>{
+        
+        const {email,name,username,password,confirmPassword} = req.body;
+        if(password!==confirmPassword){
+            return res.redirect("back");
         }
-        bcrypt.hash(password,12)
+
+        // console.log(req.body);
+        // console.log(req.file);
+        let avatar = path.join(User.AVATAR_PATH,req.file.filename);
+
+        User.findOne({email})
+        .then(user=>{
+            if(!!user){
+                return res.redirect("/auth/signin");
+            }
+            bcrypt.hash(password,12)
             .then(hashedPassword=>{
                 return User.create({
                     email,
                     name,
                     username,
                     password:hashedPassword,
+                    avatar,
                     strategy:"LOCAL"
                 })
             })
             .then(user=>{
-                console.log(user);
+                // console.log(user);
                 return res.redirect("/auth/signin");
             })
             .catch(err=>{
                 console.log("Unable to hash");
             })
         
+        })
+        .catch(err=>{
+            console.log(err);
+            res.redirect("back");
+        })
     })
-    .catch(err=>{
-        console.log(err);
-        
-    })
+
+    // console.log(req.body);
+
+    
 }
 
 exports.getLogout = (req,res,next)=>{

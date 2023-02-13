@@ -48,6 +48,7 @@ app.use(nodeSassMiddleware({
 
 // Statid file routes
 app.use(express.static('public'));
+app.use("/uploads",express.static(path.join(__dirname+"/uploads")));
 
 // To encode req body
 app.use(express.urlencoded({extended:false}));
@@ -58,7 +59,10 @@ app.use(expressSession({
     secret:"MySecretKey",
     saveUninitialized:false,
     resave:false,
-    store:store
+    store:store,
+    // cookie: {
+    //     httpOnly: false,
+    // }
 }));
 
 app.use(flash());

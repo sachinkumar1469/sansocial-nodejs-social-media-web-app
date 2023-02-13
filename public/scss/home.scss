@@ -6,14 +6,55 @@
     padding-top: 2rem;
     margin-top: 5rem;
     position: relative;
+    
    
     .left{
         display: grid;
         gap: 2rem;
         grid-template-columns: 0.8fr 2fr;
         position: relative;
+        .user-profile-left{
+            background-color: #f2f2f2;
+            // border-radius: 10px;
+            height: max-content;
+            // border-radius: 10px 10px 0 0;
+            position: sticky;
+            top: 6rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding-bottom: 5px;
+            // gap: 10px;
+            
+            h3{
+                font-family: "Montserrat", sans-serif;
+                // border: 1px solid red;
+                // text-align: center;
+                font-weight: bold;
+                text-align: center;
+                color: #333;
+                text-shadow: 1px 1px #ddd;
+                margin-block: 0.5rem;
+            }
+            .user-profile-image{
+                
+                width: 100%;
+                aspect-ratio: 1/1;
+                overflow: hidden;
+                img{
+                    height: 100%;
+                    width: 100%;
+                }
+            }
+            .user-profile-details{
+                div{
+                    font-family: Georgia, 'Times New Roman', Times, serif;
+                    text-align: center;
+                    font-size: 1.5rem;
+                }
+            }
+        }
         .users{
-            // border: 1px solid red;
             background-color: #f2f2f2;
             // border-radius: 10px;
             height: max-content;
@@ -21,15 +62,18 @@
             position: sticky;
             top: 6rem;
             // padding-bottom: 0.5rem;
+
             h3{
                 font-family: "Montserrat", sans-serif;
-                text-align: center;
+                // border: 1px solid red;
+                // text-align: center;
                 font-weight: bold;
                 text-align: center;
                 color: #333;
                 text-shadow: 1px 1px #ddd;
                 margin-block: 0.5rem;
             }
+            
             .user{
                 padding: 5px;
                 text-align: center;
@@ -42,7 +86,7 @@
                 }
 
                 .user_name{
-                    font-weight: 600;
+                    font-weight: 400;
                 }
                 .username{
                     text-decoration: none;
@@ -199,11 +243,12 @@
                         border-bottom-right-radius: 0;
                     }
                 }
+            
                 .comments-list{
                     // border: 1px solid red;
                     max-height: 0px;
                     overflow: hidden;
-                    transition: max-height 0.2s ease-out;
+                    transition: all 0.2s ease-out;
                     .comment{
                         background-color: white;
                         padding: 10px;

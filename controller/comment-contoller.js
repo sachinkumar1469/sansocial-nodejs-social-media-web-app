@@ -3,7 +3,7 @@ const Comment = require("../models/comment");
 
 exports.create = (req,res,next)=>{
     // console.log(req.body);
-    req.flash("success","Comment Added");
+    // req.flash("success","Comment Added");
     Post.findById(req.body.post)
     .then(post=>{
         if(!!post){
@@ -15,11 +15,15 @@ exports.create = (req,res,next)=>{
             })
             .then(createdComment=>{
                 post.comments.push(createdComment._id);
-                return post.save();
-            })
-            .then(savedPost=>{
-                console.log(savedPost.comments);
-                return res.redirect("back");
+                post.save();
+                if(req.xhr){
+                    return res.status(200).json({
+                        comment:createdComment,
+                        user:req.user,
+                        message:"Comment Added"
+                    })
+                }
+                res.redirect("back");
             })
             .catch(err=>{
                 console.log(err.toString());

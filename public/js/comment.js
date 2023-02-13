@@ -1,13 +1,15 @@
 const allViewCommentEl = document.querySelectorAll(".view-comments");
 
-allViewCommentEl.forEach(el=>{
-    el.addEventListener("click",function(e){
-        this.classList.toggle("active");
-        var panel = this.nextElementSibling;
-        if (panel.style.maxHeight) {
+function showCommentHandler(e){
+    e.target.classList.toggle("active");
+    var panel = e.target.nextElementSibling;
+    if (panel.style.maxHeight) {
         panel.style.maxHeight = null;
-        } else {
+    } else {
         panel.style.maxHeight = panel.scrollHeight + "px";
-        } 
-    })
+    } 
+}
+
+allViewCommentEl.forEach(el=>{
+    el.addEventListener("click",showCommentHandler);
 })

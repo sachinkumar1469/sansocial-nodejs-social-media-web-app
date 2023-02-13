@@ -15,6 +15,43 @@
   position: relative;
 }
 
+.main .left .user-profile-left {
+  background-color: #f2f2f2;
+  height: max-content;
+  position: sticky;
+  top: 6rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-bottom: 5px;
+}
+
+.main .left .user-profile-left h3 {
+  font-family: "Montserrat", sans-serif;
+  font-weight: bold;
+  text-align: center;
+  color: #333;
+  text-shadow: 1px 1px #ddd;
+  margin-block: 0.5rem;
+}
+
+.main .left .user-profile-left .user-profile-image {
+  width: 100%;
+  aspect-ratio: 1/1;
+  overflow: hidden;
+}
+
+.main .left .user-profile-left .user-profile-image img {
+  height: 100%;
+  width: 100%;
+}
+
+.main .left .user-profile-left .user-profile-details div {
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  text-align: center;
+  font-size: 1.5rem;
+}
+
 .main .left .users {
   background-color: #f2f2f2;
   height: max-content;
@@ -25,7 +62,6 @@
 
 .main .left .users h3 {
   font-family: "Montserrat", sans-serif;
-  text-align: center;
   font-weight: bold;
   text-align: center;
   color: #333;
@@ -47,7 +83,7 @@
 }
 
 .main .left .users .user .user_name {
-  font-weight: 600;
+  font-weight: 400;
 }
 
 .main .left .users .user .username {
@@ -214,7 +250,7 @@
 .main .left .post .comments .comments-list {
   max-height: 0px;
   overflow: hidden;
-  transition: max-height 0.2s ease-out;
+  transition: all 0.2s ease-out;
 }
 
 .main .left .post .comments .comments-list .comment {

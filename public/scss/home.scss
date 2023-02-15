@@ -183,6 +183,19 @@
                     // margin-right: 5rem;
                     cursor: pointer;
                 }
+                .like{
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    gap: 8px;
+                    .active-btn{
+                        color: red;
+                        // border: 1px solid blue;
+                        path{
+                            // background-color: blue;
+                        }
+                    }
+                }
             }
             .add-comment{
                 align-self: stretch;

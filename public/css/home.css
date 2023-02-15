@@ -185,6 +185,17 @@
   cursor: pointer;
 }
 
+.main .left .post .icons .like {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.main .left .post .icons .like .active-btn {
+  color: red;
+}
+
 .main .left .post .add-comment {
   align-self: stretch;
   display: flex;

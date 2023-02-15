@@ -1,11 +1,36 @@
 const passport = require("passport");
 const LocalStrategy  = require("passport-local").Strategy;
 const GoogleStrategy = require("passport-google-oauth20").Strategy;
+const JWTStrategy = require("passport-jwt").Strategy;
+const ExtractJWT = require("passport-jwt").ExtractJwt;
 const bcrypt = require("bcrypt");
 
 const User = require("../models/user");
 
 console.log("Executing Passport.js");
+
+const options = {
+    jwtFromRequest:ExtractJWT.fromAuthHeaderAsBearerToken,
+    secretOrKey:"mysecretkey"
+}
+
+passport.use(new JWTStrategy({
+    jwtFromRequest:ExtractJWT.fromAuthHeaderAsBearerToken(),
+    secretOrKey:"mysecretkey",
+},function(payload,done){
+    console.log("In passport jwt strategy")
+    User.findById(payload._id)
+    .then(user=>{
+        // console.log("In payload",payload)
+        if(!user){
+           return done(null,false);
+        }
+        done(null,user);
+    })
+    .catch(err=>{
+        done(err);
+    })
+}))
 
 passport.use(new LocalStrategy({
     usernameField:"email",
@@ -39,6 +64,8 @@ passport.use(new LocalStrategy({
         })
 }));
 
+
+
 passport.use(new GoogleStrategy({
     clientID:"861353967699-kio538nlg8mve7pursnk53h84h99o118.apps.googleusercontent.com",
     clientSecret:"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",
@@ -60,6 +87,7 @@ passport.use(new GoogleStrategy({
             })
             .catch(err=>{
                 console.log(err);
+                done(err);
             })
         }) 
         .catch(err=>{

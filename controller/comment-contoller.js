@@ -1,6 +1,11 @@
 const Post = require("../models/post");
 const Comment = require("../models/comment");
 
+const {newComment} = require("../mailers/comment-mailer");
+
+const emailWorker = require("../worker/email-worker");
+const queue = require("../config/kue");
+
 exports.create = (req,res,next)=>{
     // console.log(req.body);
     // req.flash("success","Comment Added");
@@ -15,6 +20,14 @@ exports.create = (req,res,next)=>{
             })
             .then(createdComment=>{
                 post.comments.push(createdComment._id);
+                createdComment.user = req.user;
+                // newComment(createdComment);
+                let job = queue.create("email",createdComment).save((err)=>{
+                    if(err){
+                        console.log("Creating queue err");
+                    }
+                    console.log("JOb id",job.id);
+                })
                 post.save();
                 if(req.xhr){
                     return res.status(200).json({

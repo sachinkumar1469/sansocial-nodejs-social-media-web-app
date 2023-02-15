@@ -87,7 +87,11 @@ app.use("/comment",require("./routes/comment"));
 
 app.use("/user",require("./routes/user"));
 
+app.use("/like",require("./routes/likes"))
+
 app.use(require("./routes/index"));
+
+app.use("/api",require("./routes/api"));
 
 // Auth failure handler
 app.use("/fail",(req,res,next)=>{

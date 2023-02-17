@@ -52,7 +52,8 @@ exports.postSignup = (req,res,next)=>{
                     username,
                     password:hashedPassword,
                     avatar,
-                    strategy:"LOCAL"
+                    strategy:"LOCAL",
+                    friends:[]
                 })
             })
             .then(user=>{

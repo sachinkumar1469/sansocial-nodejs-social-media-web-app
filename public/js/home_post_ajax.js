@@ -185,16 +185,17 @@
     // Toogle Like Button
     function onLikeToggle(e){
       console.log($(this));
+      let currEl = $(this);
       console.log("Clicked",$(this).attr("id"));
       const id = $(this).attr("id");
-      $(this).toggleClass("active-btn");
+      // $(this).toggleClass("active-btn");
       $.ajax({
         type:"get",
         url:id,
-        success:function(data){
+        success:(data)=>{
           console.log("data",data)
-          let likeCount = $(this).find(".like-count")
-          console.log(likeCount);
+          let likeCount = currEl.siblings(".like-count");
+          likeCount.text(data.likeCount);
         },
         error:function(err){
           console.log("err",err); a

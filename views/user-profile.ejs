@@ -7,9 +7,11 @@
     <title>San Social</title>
     <link rel="stylesheet" href="/css/navbar.css">
     <link rel="stylesheet" href="/css/home.css">
-    <link href="lib/noty.css" rel="stylesheet">
-    <script src="lib/noty.js" type="text/javascript"></script>
-    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/noty/3.1.4/noty.min.css" integrity="sha512-0p3K0H3S6Q4bEWZ/WmC94Tgit2ular2/n0ESdfEX8l172YyQj8re1Wu9s/HT9T/T2osUw5Gx/6pAZNk3UKbESw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/noty/3.1.4/noty.min.js" integrity="sha512-lOrm9FgT1LKOJRUXF3tp6QaMorJftUjowOWiDcG5GFZ/q7ukof19V0HKx/GWzXCdt9zYju3/KhBNdCLzK8b90Q==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js" integrity="sha512-STof4xm1wgkfm7heWqFJVn58Hm3EtS31XFaagaa8VMReCXAkQnJZ+jEy8PCC/iT18dFy95WcExNHFTqLyp72eQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.6.0/socket.io.js" integrity="sha512-rwu37NnL8piEGiFhe2c5j4GahN+gFsIn9k/0hkRY44iz0pc81tBNaUN56qF8X4fy+5pgAAgYi2C9FXdetne5sQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
 </head>
 <body>
     <nav class="navbar">
@@ -31,6 +33,13 @@
                 <div class="user-profile-details">
                     <div><%=profile_user.name%></div>
                 </div>
+                <div class="add-friend">
+                    <%if(profile_user._id.toString() !== user._id.toString() && !profile_user.friends.includes(user.id)){%>
+                        <div class="add-btn" id="/user/friend/add/<%=profile_user._id%>">Add Friend</div>
+                    <%} else {%>
+                        <div class="add-btn" id="friends" >Friends!</div>
+                    <%}%>
+                </div>
             </div>
             <div class="posts">
                 <%for(let post of posts){%>
@@ -40,18 +49,32 @@
             
         </div>
         <div class="right">
-            <div class="form-container">
-                <h1>Create a Post</h1>
-                <form action="/post/create" method="post">
+            
+                <div class="chat-container">
+                    <h3>Chat With Your Friend</h3>
+                    <div class="chats">
+                        <%for(msg of messages){%>
+                            <div class="chat <%=msg.from == user._id.toString()? 'self' : 'other'%>"><%=msg.message%></div>
+                        <%}%>
+                    </div>
+                    <div class="chat-input">
+                        <input type="text" class="chat-msg" name="msg" id="" placeholder="Enter text!">
+                        <button class="chat-send" data-sender="<%=user.id%>" data-receiver="<%=profile_user.id%>">Send</button>
+                    </div>
+                </div>
+                <!-- <form action="/post/create" method="post">
                     <input type="text" placeholder="Title" name="title" class="post-input">
                     <textarea class="post-input" name="content" placeholder="What's on your mind?"></textarea>
                     <button class="post-button">Post</button>
-                </form>
-            </div>
+                </form> -->
+            
         </div>
     </div>
 
     <script src="/js/comment.js"></script>
     <script src="/js/posts.js"></script>
+    <script src="/js/home_post_ajax.js"></script>
+    <script src="/js/user_profile_ajax.js"></script>
+    <script src="/js/chat-engine.js"></script>
 </body>
 </html>

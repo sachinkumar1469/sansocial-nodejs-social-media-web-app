@@ -6,6 +6,9 @@ const sassMiddleware = require("node-sass-middleware");
 const flash = require("connect-flash");
 const flashMdl = require("./middlewares/flash");
 
+const http = require("http");
+
+
 // To save express session in mongodb 
 const MongoDBStore = require("connect-mongodb-session")(expressSession);
 
@@ -21,6 +24,8 @@ const store = new MongoDBStore({
 
 // Initalizing App
 const app = express();
+const chatServer = http.createServer(app);
+const chatSocket = require("./config/chat")(chatServer);
 
 // Setting Up connection to mongodb atlas server
 mongoose.set('strictQuery', false);
@@ -76,7 +81,7 @@ app.use((req,res,next)=>{
     // console.log(req.user);
     res.locals.user = req.user;
     next();
-})
+});
 
 // Auth route
 app.use("/auth",require('./routes/auth'));

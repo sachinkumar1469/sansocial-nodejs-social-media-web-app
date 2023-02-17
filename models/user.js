@@ -25,6 +25,12 @@ const userSchema = new Schema({
         enum:["LOCAL","GOOGLE"]
     },
     avatar:String,
+    friends:[
+        {
+            type:Schema.Types.ObjectId,
+            ref:"friends"
+        }
+    ]
 });
 
 const storage = multer.diskStorage({

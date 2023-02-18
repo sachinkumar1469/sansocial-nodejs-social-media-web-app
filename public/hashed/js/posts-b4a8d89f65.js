@@ -1,0 +1,1 @@
+function dotMenuHandler(e){e=e.target.nextElementSibling;e.style.display="flex"==e.style.display?"none":"flex"}document.querySelectorAll(".three-dots").forEach(e=>{e.addEventListener("click",dotMenuHandler)});

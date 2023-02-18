@@ -1,6 +1,7 @@
 const User = require("../../../models/user");
 const jwt = require("jsonwebtoken");
 const router = require("express").Router();
+const env = require("../../../config/environment");
 
 router.post("/create-session",createSession = (req,res)=>{
     User.findOne({email:req.body.email})
@@ -19,7 +20,7 @@ router.post("/create-session",createSession = (req,res)=>{
         // }
 
         return res.status(200).json({
-            token:jwt.sign(user.toJSON(),"mysecretkey",{expiresIn: "1000000"}),
+            token:jwt.sign(user.toJSON(),env.jwt_secret,{expiresIn: "1000000"}),
             message:"Authentication successfull"
         })
     })

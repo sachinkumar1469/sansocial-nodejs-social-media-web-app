@@ -1,32 +1,20 @@
 const nodemailer = require("nodemailer");
 const ejs = require("ejs");
 const path = require("path");
+const env = require("./environment");
 
-const {google} = require("googleapis");
-const {OAuth2Client} = require("google-auth-library");
+// const {google} = require("googleapis");
+// const {OAuth2Client} = require("google-auth-library");
 
-const credentials = require("../client_secret.json");
+// const credentials = require("../client_secret.json");
 
-const oAuth2Client = new OAuth2Client(
-    credentials.web.client_id,
-    credentials.web.client_secret,
-    credentials.web.redirect_uris[0]
-);
+// const oAuth2Client = new OAuth2Client(
+//     credentials.web.client_id,
+//     credentials.web.client_secret,
+//     credentials.web.redirect_uris[0]
+// );
 
-const transporter = nodemailer.createTransport({
-    service: 'gmail',
-    host: 'smtp.gmail.com',
-    port: 465,
-    secure: true,
-    auth: {
-      type: 'OAuth2',
-      user: 'ny72161100@gmail.com',
-      clientId: credentials.web.client_id,
-      clientSecret: credentials.web.client_secret,
-      refreshToken: credentials.web.REFRESH_TOKEN,
-      accessToken: credentials.web.ACCESS_TOKEN
-    }
-  });
+const transporter = nodemailer.createTransport(env.smtp);
 
 let renderTemplate = (data,relativePath)=>{
     let mailHtml;

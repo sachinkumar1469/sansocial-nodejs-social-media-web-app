@@ -6,6 +6,8 @@ const sassMiddleware = require("node-sass-middleware");
 const flash = require("connect-flash");
 const flashMdl = require("./middlewares/flash");
 
+const env = require("./config/environment");
+
 const http = require("http");
 
 
@@ -18,18 +20,19 @@ const nodeSassMiddleware = require('node-sass-middleware');
 
 // Store configuration
 const store = new MongoDBStore({
-    uri:'mongodb+srv://sachinyadav1469:Sachin%40123@cluster0.my3twen.mongodb.net/sansocial?retryWrites=true&w=majority',
+    uri:`mongodb+srv://sachinyadav1469:Sachin%40123@cluster0.my3twen.mongodb.net/${env.db_name}?retryWrites=true&w=majority`,
     collection:'authStore'
 })
 
 // Initalizing App
 const app = express();
+require('./config/view-helper')(app);
 const chatServer = http.createServer(app);
 const chatSocket = require("./config/chat")(chatServer);
 
 // Setting Up connection to mongodb atlas server
 mongoose.set('strictQuery', false);
-mongoose.connect('mongodb+srv://sachinyadav1469:Sachin%40123@cluster0.my3twen.mongodb.net/sansocial?retryWrites=true&w=majority')
+mongoose.connect(`mongodb+srv://sachinyadav1469:Sachin%40123@cluster0.my3twen.mongodb.net/${env.db_name}?retryWrites=true&w=majority`)
         .then(result=>{
             app.listen(8000);
         })
@@ -43,17 +46,19 @@ app.set('view engine','ejs');
 app.set('views','views');
 
 // Node Sass middleware
-app.use(nodeSassMiddleware({
+if(env.name == "development"){
+    app.use(nodeSassMiddleware({
     src:path.join(__dirname,"public","scss"),
     dest:path.join(__dirname,"public","css"),
     prefix:"/css",
-    // debug:true,
-    outputStyle:"expanded"
-}))
+        debug:true,
+        outputStyle:"expanded"
+    }));
+}
 
 // Statid file routes
-app.use(express.static('public'));
-app.use("/uploads",express.static(path.join(__dirname+"/uploads")));
+app.use(express.static(env.asset_path));
+app.use("/uploads",express.static(path.join(__dirname,"uploads")));
 
 // To encode req body
 app.use(express.urlencoded({extended:false}));
@@ -61,7 +66,7 @@ app.use(express.urlencoded({extended:false}));
 
 // Initializing the express session
 app.use(expressSession({
-    secret:"MySecretKey",
+    secret:env.session_secret,
     saveUninitialized:false,
     resave:false,
     store:store,

@@ -1,7 +1,7 @@
 const nodemailer = require("../config/nodemailer");
 
 exports.newComment = (comment)=>{
-    console.log("Inside new comment mailer",comment);
+    // console.log("Inside new comment mailer",comment);
     nodemailer.transporter.sendMail({
             from:"ny72161100@gmail.com",
             to:comment.user.email,

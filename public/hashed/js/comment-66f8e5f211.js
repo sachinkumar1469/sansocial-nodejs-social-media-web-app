@@ -1,0 +1,1 @@
+const allViewCommentEl=document.querySelectorAll(".view-comments");function showCommentHandler(e){e.target.classList.toggle("active");e=e.target.nextElementSibling;e.style.maxHeight?e.style.maxHeight=null:e.style.maxHeight=e.scrollHeight+"px"}allViewCommentEl.forEach(e=>{e.addEventListener("click",showCommentHandler)});

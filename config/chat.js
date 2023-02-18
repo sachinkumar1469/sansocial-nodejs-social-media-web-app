@@ -13,14 +13,15 @@ function chatSocket(chatServer){
     io.on("connection",(socket)=>{
         const query = socket.handshake.query;
         const from = query.userName;
-        console.log('A client has connected with socketid and userid is:', socket.id,from);
+        // console.log('A client has connected with socketid and userid is:', socket.id,from);
         // Store the from userId in users object with socket id as key
         users[socket.id] = from;
-        console.log("Updated users is",users);
 
         // To create a room between sender and receiver
         socket.on("create-room",function(data){
-            console.log("Inside create room",data);
+
+            // console.log("Inside create room",data);
+
             const {from,to} = data;
 
             // Unique and private room is created for two users.
@@ -31,7 +32,8 @@ function chatSocket(chatServer){
         // private-msg is a custom event
         socket.on("send-message",async function(data){
             
-            console.log("send-message event triggered by",from,"with data",data);
+            // console.log("send-message event triggered by",from,"with data",data);
+
             // Destructuring the data object which is passed as argument to the callback
             const {to,message} = data;
 
@@ -40,10 +42,10 @@ function chatSocket(chatServer){
                 return users[socketId] == to;
             });
 
-            console.log("Does receiver exist?",toSocket);
+            // console.log("Does receiver exist?",toSocket);
 
             // If it exist the store the msg in db and create a room then emit the msg in the room
-            if(toSocket){
+            // if(toSocket){
 
                 // Create a unique room for two users
                 // const roomName = [socket.id,toSocket].sort().join("-");
@@ -77,18 +79,23 @@ function chatSocket(chatServer){
                     sender:users[socket.id],
                     message,
                 })
-            }
+            // } else {
+
+            // }
         })
 
         socket.on("disconnect",function(){
             delete users[socket.id];
-            console.log("User disconnects",users[socket.id]);
+            // console.log("User disconnects",users[socket.id]);
         })
         
     });
 
     chatServer.listen(5000,(err)=>{
-        console.log("Server is running on port 5000",err);
+        if(err){
+            console.log("Error in starting socket.io server");
+        }
+        // console.log("Server is running on port 5000",err);
     })
 
     return "Hello"

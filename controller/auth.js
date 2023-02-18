@@ -5,7 +5,7 @@ const bcrypt = require("bcrypt");
 const passport = require("../config/passport");
 
 exports.getSignIn = (req,res,next)=>{
-    console.log("In first signin");
+    // console.log("In first signin");
     res.render(path.join(__dirname,"..","views","signin"));
 };
 
@@ -26,8 +26,8 @@ exports.getSignup = (req,res,next)=>{
 }
 
 exports.postSignup = (req,res,next)=>{
-    console.log("here");
-    console.log(req.body);
+    // console.log("here");
+    // console.log(req.body);
     User.uploadAvatar(req,res,(err)=>{
         
         const {email,name,username,password,confirmPassword} = req.body;
@@ -62,6 +62,7 @@ exports.postSignup = (req,res,next)=>{
             })
             .catch(err=>{
                 console.log("Unable to hash");
+                return res.redirect("back");
             })
         
         })

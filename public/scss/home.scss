@@ -354,6 +354,9 @@
                 padding: 10px 8px;
                 display: flex;
                 flex-direction: column;
+                border: 1px solid gray;
+                border-bottom: none;
+                box-sizing: border-box;
                 &::-webkit-scrollbar{
                     display: none;
                 }

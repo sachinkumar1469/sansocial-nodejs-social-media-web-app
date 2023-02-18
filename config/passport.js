@@ -4,10 +4,11 @@ const GoogleStrategy = require("passport-google-oauth20").Strategy;
 const JWTStrategy = require("passport-jwt").Strategy;
 const ExtractJWT = require("passport-jwt").ExtractJwt;
 const bcrypt = require("bcrypt");
+const env = require("./environment");
 
 const User = require("../models/user");
 
-console.log("Executing Passport.js");
+// console.log("Executing Passport.js");
 
 const options = {
     jwtFromRequest:ExtractJWT.fromAuthHeaderAsBearerToken,
@@ -16,7 +17,7 @@ const options = {
 
 passport.use(new JWTStrategy({
     jwtFromRequest:ExtractJWT.fromAuthHeaderAsBearerToken(),
-    secretOrKey:"mysecretkey",
+    secretOrKey:env.jwt_secret,
 },function(payload,done){
     console.log("In passport jwt strategy")
     User.findById(payload._id)
@@ -67,9 +68,9 @@ passport.use(new LocalStrategy({
 
 
 passport.use(new GoogleStrategy({
-    clientID:"861353967699-kio538nlg8mve7pursnk53h84h99o118.apps.googleusercontent.com",
-    clientSecret:"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",
-    callbackURL:"http://localhost:8000/auth/google/redirect",
+    clientID:env.authClientId,
+    clientSecret:env.authClientSecret,
+    callbackURL:env.authCallbackURL,
 },(accessToken,refreshToken,profile,done)=>{
     const {name,email} = profile._json;
     User.findOne({email})
@@ -98,14 +99,14 @@ passport.use(new GoogleStrategy({
 }))
 
 passport.serializeUser((user,done)=>{
-    console.log("In serializeUser");
+    // console.log("In serializeUser");
     // console.log(user);
     // console.log("____________");
     done(null,user._id);
 })
 
 passport.deserializeUser((userId,done)=>{
-    console.log("In deserialized user");
+    // console.log("In deserialized user");
     User.findById(userId)
         .then(user=>{
             if(!user){

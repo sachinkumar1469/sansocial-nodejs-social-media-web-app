@@ -8,7 +8,7 @@ const passport = require("../config/passport");
 router.get("/",passport.checkAuthentication,(req,res,next)=>{
     // console.log(req.user);
     const message = [];
-    console.log(res.locals);
+    // console.log(res.locals);
     Posts.find({})
     .populate("user")
     .sort({

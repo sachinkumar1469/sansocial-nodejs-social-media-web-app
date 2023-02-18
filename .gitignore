@@ -1,5 +1,7 @@
 /node_modules
 
-/client_secret.json
+# /client_secret.json
 
-/uploads
+# /uploads
+
+/sachin.pem

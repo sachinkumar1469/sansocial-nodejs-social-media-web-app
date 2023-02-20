@@ -1,4 +1,16 @@
 const credentials = require("../client_secret.json");
+const fs = require("fs");
+const rfs = require("rotating-file-stream");
+const path = require("path");
+
+const logDirectory = path.join(__dirname, '../production_logs');
+fs.existsSync(logDirectory) || fs.mkdirSync(logDirectory);
+
+const accessLogStream = rfs('access.log', {
+    interval: '1d',
+    path: logDirectory
+});
+
 
 const development = {
     name : "development",
@@ -23,6 +35,10 @@ const development = {
     authClientSecret:"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",
     authCallbackURL:"http://localhost:8000/auth/google/redirect",
     jwt_secret:"mysecretkey",
+    morgan: {
+      mode: 'dev',
+      options: {stream: accessLogStream}
+  }
 }
 
 const production = {
@@ -48,6 +64,10 @@ const production = {
     authClientSecret:process.env.social_client_secret,
     authCallbackURL:"http://localhost:8000/auth/google/redirect",
     jwt_secret:"mysecretkey",
+    morgan: {
+      mode: 'combined',
+      options: {stream: accessLogStream}
+  }
 }
 
 module.exports = production;

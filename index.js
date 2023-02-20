@@ -6,6 +6,8 @@ const sassMiddleware = require("node-sass-middleware");
 const flash = require("connect-flash");
 const flashMdl = require("./middlewares/flash");
 
+const logger = require("morgan")
+
 const env = require("./config/environment");
 
 const http = require("http");
@@ -58,10 +60,14 @@ if(env.name == "development"){
 
 // Statid file routes
 app.use(express.static(env.asset_path));
+
+app.use(logger(env.morgan.mode, env.morgan.options));
+
 app.use("/uploads",express.static(path.join(__dirname,"uploads")));
 
 // To encode req body
 app.use(express.urlencoded({extended:false}));
+
 
 
 // Initializing the express session

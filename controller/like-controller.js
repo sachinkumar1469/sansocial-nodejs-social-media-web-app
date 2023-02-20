@@ -4,7 +4,7 @@ const Comment = require("../models/comment");
 
 
 module.exports.toggleLike = async function(req,res){
-    console.log("Here",req.query);
+    // console.log("Here",req.query);
     try{
         let likeable;
         let removeLike = false;

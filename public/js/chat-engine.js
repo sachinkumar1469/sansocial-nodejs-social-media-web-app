@@ -5,7 +5,7 @@ class chatEngine{
         this.chatBoxId=$(`${chatBoxId}`);
         this.from = from;
         this.to = to;
-        this.socket = io.connect("http://localhost:5000",{
+        this.socket = io.connect("http://103.4.14.176:5000",{
             query:{
                 userName:from
             }

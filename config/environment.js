@@ -14,7 +14,7 @@ const accessLogStream = rfs('access.log', {
 
 const development = {
     name : "development",
-    asset_path : "./public",
+    asset_path : "public",
     session_secret : "MySecretKey",
     db_name : "sansocial",
     smtp:{

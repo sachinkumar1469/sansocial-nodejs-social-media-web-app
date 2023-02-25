@@ -1,0 +1,55 @@
+[0mGET / [36m302 [0m24.793 ms - 68[0m
+[0mGET /auth/signin [32m200 [0m66.867 ms - 3889[0m
+[0mGET /css//style.css [33m404 [0m46.041 ms - 153[0m
+[0mGET /favicon.ico [33m404 [0m40.401 ms - 150[0m
+[0mGET /css//style.css [33m404 [0m41.201 ms - 153[0m
+[0mGET /auth/signin [32m200 [0m61.153 ms - 3888[0m
+[0mGET /css/style.css [33m404 [0m49.441 ms - 152[0m
+[0mGET /auth/signin [36m304 [0m44.228 ms - -[0m
+[0mGET /css/style.css [33m404 [0m39.768 ms - 152[0m
+[0mGET /auth/signin [36m304 [0m55.866 ms - -[0m
+[0mGET /css/style.css [33m404 [0m46.094 ms - 152[0m
+[0mGET /auth/signin [36m304 [0m55.949 ms - -[0m
+[0mGET /css/style.css [33m404 [0m42.127 ms - 152[0m
+[0mGET /auth/signin [36m304 [0m77.975 ms - -[0m
+[0mGET /css/style.css [33m404 [0m60.735 ms - 152[0m
+[0mGET /auth/signin [36m304 [0m64.463 ms - -[0m
+[0mGET /css/style.css [33m404 [0m43.392 ms - 152[0m
+[0mGET /auth/signin [36m304 [0m42.690 ms - -[0m
+[0mGET /auth/signin [36m304 [0m63.848 ms - -[0m
+[0mGET /auth/signin [36m304 [0m48.874 ms - -[0m
+[0mGET /auth/signin [36m304 [0m58.479 ms - -[0m
+[0mGET /css/style.css [33m404 [0m46.235 ms - 152[0m
+[0mGET /auth/signin [36m304 [0m59.373 ms - -[0m
+[0mGET /css/style.css [33m404 [0m45.066 ms - 152[0m
+[0mGET /auth/signin [36m304 [0m71.373 ms - -[0m
+[0mGET /css/style.css [33m404 [0m42.798 ms - 152[0m
+[0mGET /auth/signin [36m304 [0m56.551 ms - -[0m
+[0mGET /css/style.css [33m404 [0m42.605 ms - 152[0m
+[0mGET /auth/signin [36m304 [0m42.962 ms - -[0m
+[0mGET /css/style.css [33m404 [0m42.880 ms - 152[0m
+[0mGET /auth/signin [36m304 [0m63.102 ms - -[0m
+[0mGET /css/style.css [33m404 [0m42.639 ms - 152[0m
+[0mGET /auth/signin [36m304 [0m41.254 ms - -[0m
+[0mGET /css/style.css [33m404 [0m42.834 ms - 152[0m
+[0mGET /auth/signin [36m304 [0m42.033 ms - -[0m
+[0mGET /auth/signin [36m304 [0m68.739 ms - -[0m
+[0mGET /auth/signin [36m304 [0m56.204 ms - -[0m
+[0mGET /css/style.css [33m404 [0m59.758 ms - 152[0m
+[0mGET /auth/signin [36m304 [0m55.687 ms - -[0m
+[0mGET /css/style.css [33m404 [0m56.080 ms - 152[0m
+[0mGET / [36m302[0m 28.626 ms - 68[0m
+[0mGET /auth/signin [36m304[0m 320.656 ms - -[0m
+[0mGET /favicon.ico [33m404[0m 42.980 ms - 150[0m
+[0mPOST /auth/signin [36m302[0m 945.353 ms - 46[0m
+[0mGET / [32m200[0m 381.774 ms - 17307[0m
+::1 - - [25/Feb/2023:20:40:03 +0000] "GET / HTTP/1.1" 302 68 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/110.0.0.0 Safari/537.36 Edg/110.0.1587.56"
+::1 - - [25/Feb/2023:20:40:03 +0000] "GET /auth/signin HTTP/1.1" 200 3899 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/110.0.0.0 Safari/537.36 Edg/110.0.1587.56"
+::1 - - [25/Feb/2023:20:40:05 +0000] "GET /favicon.ico HTTP/1.1" 404 150 "http://localhost:8000/auth/signin" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/110.0.0.0 Safari/537.36 Edg/110.0.1587.56"
+::1 - - [25/Feb/2023:20:40:09 +0000] "POST /auth/signin HTTP/1.1" 302 46 "http://localhost:8000/auth/signin" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/110.0.0.0 Safari/537.36 Edg/110.0.1587.56"
+::1 - - [25/Feb/2023:20:40:09 +0000] "GET / HTTP/1.1" 200 17362 "http://localhost:8000/auth/signin" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/110.0.0.0 Safari/537.36 Edg/110.0.1587.56"
+::1 - - [25/Feb/2023:20:42:23 +0000] "GET /like/toggle/?id=63ef9a4e31ea61dfe97558ac&type=post HTTP/1.1" 200 269 "http://localhost:8000/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/110.0.0.0 Safari/537.36 Edg/110.0.1587.56"
+::1 - - [25/Feb/2023:20:42:30 +0000] "GET /user/profile/sachin HTTP/1.1" 200 7246 "http://localhost:8000/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/110.0.0.0 Safari/537.36 Edg/110.0.1587.56"
+::1 - - [25/Feb/2023:20:42:30 +0000] "GET /uploads/user/avatar/avatar-1676646722798 HTTP/1.1" 200 270876 "http://localhost:8000/user/profile/sachin" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/110.0.0.0 Safari/537.36 Edg/110.0.1587.56"
+::1 - - [25/Feb/2023:20:42:33 +0000] "GET / HTTP/1.1" 200 17120 "http://localhost:8000/user/profile/sachin" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/110.0.0.0 Safari/537.36 Edg/110.0.1587.56"
+::1 - - [25/Feb/2023:20:43:13 +0000] "GET / HTTP/1.1" 304 - "http://localhost:8000/user/profile/sachin" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/110.0.0.0 Safari/537.36 Edg/110.0.1587.56"
